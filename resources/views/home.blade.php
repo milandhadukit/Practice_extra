@@ -19,6 +19,8 @@
 
                     {{ __('You are logged in!') }}
                     <a href="{{route('logouts')}}">Logout</a>
+                    <a href="{{route('lang')}}">Select Language</a>
+
                 </div>
             </div>
         </div>

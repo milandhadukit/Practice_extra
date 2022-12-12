@@ -11,6 +11,9 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LangController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CaptchaServiceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -81,3 +84,16 @@ Route::get('/auth/google', [GoogleController::class,'redirectToGoogle']);
 Route::get('/auth/google/callback', [GoogleController::class,'handleGoogleCallback']);
 
 
+// localization
+Route::get('lang/home', [LangController::class, 'index'])->name('lang');
+Route::get('lang/change', [LangController::class, 'change'])->name('changeLang');
+
+
+//captcha - not work    
+Route::get('site-register', [RegisterController::class, 'siteRegister']);
+Route::post('/site-register',[RegisterController::class,'siteRegisterPost']);
+
+//captcha simple
+Route::get('/contact-form', [CaptchaServiceController::class, 'index']);
+Route::post('/captcha-validation', [CaptchaServiceController::class, 'capthcaFormValidate']);
+Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']);

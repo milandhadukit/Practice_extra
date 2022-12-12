@@ -17,6 +17,15 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+
+
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -76,9 +85,58 @@
             </div>
         </nav>
 
+
+
+
         <main class="py-4">
             @yield('content')
+
         </main>
+
+
+
+
+
+
+        <div class="container">
+  
+            <a href="{{route('home')}}" class="btn btn-info">Back</a>
+        
+              <div class="row">
+                  <div class="col-md-2 col-md-offset-6 text-right">
+                      <strong>Select Language: </strong>
+                  </div>
+                  <div class="col-md-4">
+                      <select class="form-control changeLang">
+                          <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>English</option>
+                          {{-- <option value="fr" {{ session()->get('locale') == 'fr' ? 'selected' : '' }}>France</option>
+                          <option value="sp" {{ session()->get('locale') == 'sp' ? 'selected' : '' }}>Spanish</option> --}}
+                          <option value="hi" {{ session()->get('locale') == 'hi' ? 'selected' : '' }}>Hindi</option>
+                      </select>
+                  </div>
+              </div>
+      
+          {{-- lang file name=messages.key name=title --}}
+              {{-- <h1>{{ __('messages.title') }}</h1>  --}}
+      
+           
+          </div>
+     
+        
+      <script type="text/javascript">
+        
+          var url = "{{ route('changeLang') }}";
+        
+          $(".changeLang").change(function(){
+              window.location.href = url + "?lang="+ $(this).val();
+          });
+        
+      </script>
+
+
+
+
+
     </div>
 </body>
 </html>
